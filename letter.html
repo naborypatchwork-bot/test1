@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Приглашение на День Рождения</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #1a0f2e 0%, #2d1b69 50%, #1a0f2e 100%);
+            color: #fff;
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .container {
+            max-width: 1200px;
+            width: 100%;
+            margin: 0 auto;
+        }
+        
+        /* Градиентный заголовок */
+        .gradient-header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 20px;
+        }
+        
+        .gradient-title {
+            font-size: 3.5rem;
+            background: linear-gradient(90deg, #ff8a00, #e52e71, #9d4edd);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-fill-color: transparent;
+            animation: gradient 3s ease infinite;
+            margin-bottom: 15px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        @keyframes gradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .gradient-subtitle {
+            font-size: 1.2rem;
+            color: #d0c6f5;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        /* Основная карточка приглашения */
+        .invitation-card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 50px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .invitation-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.4);
+        }
+        
+        .invitation-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #ff8a00, #e52e71, #9d4edd);
+        }
+        
+        /* Элементы приглашения */
+        .invitation-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .invitation-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+        
+        .icon-wrapper {
+            background: linear-gradient(135deg, #ff8a00, #e52e71);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+        
+        .icon-wrapper i {
+            font-size: 24px;
+        }
+        
+        .item-content {
+            flex: 1;
+        }
+        
+        .item-title {
+            font-size: 1.5rem;
+            color: #ffcc00;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+        
+        .item-text {
+            font-size: 1.2rem;
+            line-height: 1.5;
+            color: #f0f0f0;
+        }
+        
+        .accent {
+            color: #ffcc00;
+            font-weight: 700;
+            text-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
+        }
+        
+        /* Примеры кейсов */
+        .cases-section {
+            margin-bottom: 50px;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 30px;
+            color: #ffcc00;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(90deg, #ff8a00, #e52e71);
+        }
+        
+        .cases-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        
+        .case-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 25px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .case-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateY(-5px);
+        }
+        
+        .case-title {
+            font-size: 1.4rem;
+            color: #9d4edd;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .case-title i {
+            margin-right: 10px;
+            color: #ff8a00;
+        }
+        
+        .case-text {
+            color: #d0c6f5;
+            line-height: 1.6;
+        }
+        
+        /* Адресный блок */
+        .address-block {
+            background: linear-gradient(135deg, rgba(157, 78, 221, 0.2), rgba(255, 138, 0, 0.2));
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            margin-top: 30px;
+            border: 1px solid rgba(255, 138, 0, 0.3);
+        }
+        
+        .address-title {
+            font-size: 1.8rem;
+            color: #ffcc00;
+            margin-bottom: 15px;
+        }
+        
+        .address-text {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #fff;
+        }
+        
+        /* Футер */
+        .footer {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #b0a6d0;
+            font-size: 1rem;
+        }
+        
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .gradient-title {
+                font-size: 2.5rem;
+            }
+            
+            .invitation-card {
+                padding: 25px;
+            }
+            
+            .invitation-item {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .icon-wrapper {
+                margin-right: 0;
+                margin-bottom: 15px;
+            }
+            
+            .cases-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .item-title {
+                font-size: 1.3rem;
+            }
+            
+            .item-text {
+                font-size: 1.1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .gradient-title {
+                font-size: 2rem;
+            }
+            
+            .invitation-card {
+                padding: 20px;
+            }
+            
+            .section-title {
+                font-size: 1.6rem;
+            }
+        }
+        
+        /* Декоративные элементы */
+        .decoration {
+            position: absolute;
+            z-index: -1;
+        }
+        
+        .decoration-1 {
+            top: 10%;
+            left: 5%;
+            width: 100px;
+            height: 100px;
+            background: radial-gradient(circle, rgba(255, 138, 0, 0.2) 0%, transparent 70%);
+        }
+        
+        .decoration-2 {
+            bottom: 10%;
+            right: 5%;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle, rgba(157, 78, 221, 0.2) 0%, transparent 70%);
+        }
+    </style>
+</head>
+<body>
+    <div class="decoration decoration-1"></div>
+    <div class="decoration decoration-2"></div>
+    
+    <div class="container">
+        <!-- Градиентный заголовок -->
+        <header class="gradient-header">
+            <h1 class="gradient-title">Приглашение на вечеринку</h1>
+            <p class="gradient-subtitle">В честь дня рождения • Стильный лофт • Незабываемая атмосфера</p>
+        </header>
+        
+        <!-- Карточка приглашения -->
+        <main class="invitation-card">
+            <div class="invitation-item">
+                <div class="icon-wrapper">
+                    <i class="fas fa-birthday-cake"></i>
+                </div>
+                <div class="item-content">
+                    <h2 class="item-title">Повод для праздника</h2>
+                    <p class="item-text">Приглашаю вас отпраздновать <span class="accent">день рождения</span> в кругу друзей и близких. Ждём вас на праздничной вечеринке с отличной музыкой, вкусными угощениями и прекрасной компанией.</p>
+                </div>
+            </div>
+            
+            <div class="invitation-item">
+                <div class="icon-wrapper">
+                    <i class="fas fa-calendar-alt"></i>
+                </div>
+                <div class="item-content">
+                    <h2 class="item-title">Дата и время</h2>
+                    <p class="item-text">Ждём вас <span class="accent">1 февраля</span>. Начало праздника в <span class="accent">19:00</span>. Приходите пораньше, чтобы успеть на торжественное открытие вечера!</p>
+                </div>
+            </div>
+            
+            <div class="invitation-item">
+                <div class="icon-wrapper">
+                    <i class="fas fa-tshirt"></i>
+                </div>
+                <div class="item-content">
+                    <h2 class="item-title">Дресс-код</h2>
+                    <p class="item-text"><span class="accent">Коктейльные платья и костюмы</span>. Давайте создадим атмосферу элегантности и стиля. Не забудьте свои самые праздничные наряды!</p>
+                </div>
+            </div>
+            
+            <div class="invitation-item">
+                <div class="icon-wrapper">
+                    <i class="fas fa-grin-stars"></i>
+                </div>
+                <div class="item-content">
+                    <h2 class="item-title">Настроение</h2>
+                    <p class="item-text">Обязательное условие — <span class="accent">хорошее настроение</span>! Готовим сюрпризы, конкурсы и много положительных эмоций для каждого гостя.</p>
+                </div>
+            </div>
+        </main>
+        
+        <!-- Примеры кейсов -->
+        <section class="cases-section">
+            <h2 class="section-title">Что вас ждёт на празднике</h2>
+            <div class="cases-container">
+                <div class="case-card">
+                    <h3 class="case-title"><i class="fas fa-music"></i> Музыкальная программа</h3>
+                    <p class="case-text">Выступление live-банда, диджей-сет с лучшими хитами, специально подготовленный плейлист для танцев до утра.</p>
+                </div>
+                
+                <div class="case-card">
+                    <h3 class="case-title"><i class="fas fa-cocktail"></i> Фирменные коктейли</h3>
+                    <p class="case-text">Авторские коктейли от нашего бармена, праздничный фуршет, тематические угощения и сладкий стол.</p>
+                </div>
+                
+                <div class="case-card">
+                    <h3 class="case-title"><i class="fas fa-photo-video"></i> Фото-зона и развлечения</h3>
+                    <p class="case-text">Стилизованная фотозона с профессиональным фотографом, игры и конкурсы с призами, караоке и многое другое.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Адрес -->
+        <div class="address-block">
+            <h3 class="address-title">Место проведения</h3>
+            <p class="address-text">г. Москва, стильный лофт в центре города</p>
+            <p class="item-text" style="margin-top: 15px; font-size: 1.1rem;">Точный адрес будет отправлен вам за день до мероприятия</p>
+        </div>
+        
+        <!-- Футер -->
+        <footer class="footer">
+            <p>Подтвердите ваше участие до 28 января • Тел.: +7 (XXX) XXX-XX-XX</p>
+            <p style="margin-top: 10px;">С любовью, именинник/именинница ❤️</p>
+        </footer>
+    </div>
+
+    <script>
+        // Добавляем анимацию при загрузке страницы
+        document.addEventListener('DOMContentLoaded', function() {
+            const card = document.querySelector('.invitation-card');
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            
+            setTimeout(() => {
+                card.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                card.style.opacity = '1';
+                card.style.transform = 'translateY(0)';
+            }, 300);
+            
+            // Анимация для кейсов при скролле
+            const caseCards = document.querySelectorAll('.case-card');
+            
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+            
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+            
+            caseCards.forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                observer.observe(card);
+            });
+            
+            // Эффект при наведении на иконки
+            const iconWrappers = document.querySelectorAll('.icon-wrapper');
+            iconWrappers.forEach(icon => {
+                icon.addEventListener('mouseenter', function() {
+                    this.style.transform = 'scale(1.1) rotate(5deg)';
+                });
+                
+                icon.addEventListener('mouseleave', function() {
+                    this.style.transform = 'scale(1) rotate(0deg)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
